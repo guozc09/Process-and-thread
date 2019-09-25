@@ -3,10 +3,14 @@ CXX = g++
 CFLAGS += -I./include
 CXXFLAGS += -I./include
 
-objects = fork_test.o
+CFLAGS += -lpthread -lrt
 
+#objects += fork_test.o
+
+objects += error_plp.o producer_consumer.o
+#$(CXX) -o main $(objects)
 main : $(objects)
-	$(CXX) -o main $(objects)
+	$(CC) -o main $(objects) $(CFLAGS)
 
 .PHONY : clean
 clean :
